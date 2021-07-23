@@ -34,6 +34,7 @@ class ProjectCreateView(View):
         return render(request, 'tasks/create_project_view.html', {'form': form})
 
 
+
 @method_decorator(login_required, name='dispatch')
 class ProjectUpdateView(UpdateView):
     model = Project

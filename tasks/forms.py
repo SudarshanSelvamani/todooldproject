@@ -19,3 +19,4 @@ class TaskForm(forms.ModelForm):
         model = Task
         fields = ['text','tag','end','completed']
 
+
