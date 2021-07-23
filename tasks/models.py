@@ -18,3 +18,4 @@ class Task(TimeFramedModel):
 
     def __str__(self):
         return self.text
+
