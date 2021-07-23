@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-n$my)a1w15b$_wu1x(w3=qu1#ukxon1*@)q2m-k3@37lmma61_'
+SECRET_KEY = 'django-insecure-#$bs89d@7rm$5_puhq19fuhe^8=5j(vmncogasf=m)_k-5b6o3'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'taggit',
+    'extra_views',
+    'django_filters',
+    'tasks',
+    'accounts'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +60,7 @@ ROOT_URLCONF = 'todoproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates',],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,8 +124,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS=[BASE_DIR/'static',BASE_DIR/'tasks'/'static']
+STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#Login URL
+LOGIN_URL = 'login'
+
+#Logout redirect view
+LOGOUT_REDIRECT_URL = 'login'
+
+#Login redirect view
+LOGIN_REDIRECT_URL = 'tasks:list_project'
+
+#for Email in developement
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
