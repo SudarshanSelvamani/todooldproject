@@ -9,3 +9,4 @@ repos:
     hooks:
     - id: flake8
       files: ^testpress/apps/|^testpress/tests/
+      
