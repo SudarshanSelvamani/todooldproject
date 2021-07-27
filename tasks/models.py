@@ -5,6 +5,8 @@ from taggit.managers import TaggableManager
 # Create your models here.
 
 
+
+
 class Project(models.Model):
     name = models.CharField(max_length=20)
 
